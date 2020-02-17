@@ -9,9 +9,9 @@ public class AppDriver {
 
     public static void main(String[] args) {
 
-        AppLogger.setLogger(AppDriver.class.getName());
-        Logger log = AppLogger.getInstance().getAppLogger();
+        Logger log=AppLogger.setLogger(AppDriver.class.getName());
 
+        //add a Console Handler so we can see the log as we run it
         log.addHandler(new ConsoleHandler());
 
         log.warning("STARTING");

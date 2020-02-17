@@ -40,7 +40,7 @@ dependencies {
 
     testImplementation "${junitVersion}"
 
-    def localLib = "${group}:Learn_GradleJavaProjectIntellij:1.0-SNAPSHOT"
+    def localLib = "${group}:Learn_GradleJavaProjectIntellij:0.1.0"
 
     //This is needed in case you are just compiling the test tasks
     implementation "${junitVersion}"
