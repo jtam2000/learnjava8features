@@ -36,15 +36,14 @@ sourceSets {
 }
 
 dependencies {
+
     def junitVersion = 'junit:junit:4.12'
 
     testImplementation "${junitVersion}"
 
     def localLib = "${group}:Learn_GradleJavaProjectIntellij:0.1.0"
 
-    //This is needed in case you are just compiling the test tasks
-    implementation "${junitVersion}"
-    implementation "${localLib}"
+    implementation "${junitVersion}", "${localLib}"
 }
 
 
@@ -58,7 +57,7 @@ tasks.withType(JavaExec) {
 }
 
 
-def mainFunction = "${group}.learnjava8features.appdriver.AppDriver"
+def mainFunction = "${group}.${name}.appdriver.AppDriver"
 
 
 mainClassName = "$mainFunction"
