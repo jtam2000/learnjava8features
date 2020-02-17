@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'com.jasontam'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+
+//  Update to your local maven repository
+def localRepository = '/Users/jason/.m2/repository'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "${localRepository}"
+    }
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+dependencies {
+    def junitVersion = 'junit:junit:4.12'
+
+    testImplementation "${junitVersion}"
+
+    def localLib = "${group}:Learn_GradleJavaProjectIntellij:1.0-SNAPSHOT"
+
+    //This is needed in case you are just compiling the test tasks
+    implementation "${junitVersion}"
+    implementation "${localLib}"
+}
+
+
+//Logging
+def loggingConfigurationFile = 'logging.properties'
+test {
+    systemProperty 'java.util.logging.config.file', "${loggingConfigurationFile}"
+}
+tasks.withType(JavaExec) {
+    systemProperty 'java.util.logging.config.file', "${loggingConfigurationFile}"
+}
+
+
+def mainFunction = "${group}.learnjava8features.appdriver.AppDriver"
+
+
+mainClassName = "$mainFunction"
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainFunction"
+    }
+}

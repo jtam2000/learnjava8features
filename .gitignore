@@ -1,0 +1,6 @@
+out/**
+.gradle/**
+build/**
+lib/**
+target/**
+.DS_Store
